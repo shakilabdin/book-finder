@@ -1,0 +1,15 @@
+ <%= form_for @author do |f| %>
+
+    <%= f.label :name, 'Authors Name' %>
+    <%= f.text_field :name%>
+    <br>
+    <%= f.label :profile, 'Authors Profile' %>
+    <%= f.text_field :profile%>
+    <br>
+    <%= f.label :picture, 'Authors Picture' %>
+    <%= f.text_field :picture%>
+    <br>
+    <%= f.submit 'Add Author' %>
+
+<% end %>
+

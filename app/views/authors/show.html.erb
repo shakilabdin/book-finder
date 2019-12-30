@@ -1,0 +1,16 @@
+<h2><%= @author.name %></h2>
+
+<img src=<%= @author.picture %> alt=<%= @author.name%>>
+<br>
+<br>
+<p>Profile: <%= @author.profile %></p>
+<br>
+Books Written:
+<% if @author.books %>
+    <% @author.books.each do |book|  %>
+        <p><%= link_to book.title, book_path(book) %></p>
+    <%end  %>
+<% end %>
+
+<%= button_to 'All Authors', authors_path, method: :get %>
+<%= button_to "Edit", edit_author_path(@author), method: :get %>

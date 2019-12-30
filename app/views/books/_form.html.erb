@@ -1,0 +1,18 @@
+<%= form_for @book do |f| %>
+
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :author_id, "Author" %>
+    <%= f.select :author_id, @author.collect {|a| [a.name, a.id]}, include_blank: true %>
+    <br>
+    <%= f.label :genre_id, "Genre: " %>
+    <%= f.select :genre_id, @genre.collect {|g| [g.name, g.id]}, include_blank: true %>
+    <br>
+    <%= f.label :summary, "Summary of Book" %>
+    <%= f.text_area :summary, size: '100x5' %>
+    <br>
+    <%= f.submit "Submit" %>
+    
+
+<% end %>
