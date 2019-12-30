@@ -1,0 +1,16 @@
+<%= form_for @genre do |f| %>
+
+    <%= f.label :name, 'Genre Name' %>
+    <%= f.text_field :name%>
+    <br>
+    <%= f.label :profile, 'Genre Profile' %>
+    <%= f.text_field :profile%>
+    <br>
+    <%= f.label :picture, 'Genre Picture' %>
+    <%= f.text_field :picture%>
+    <br>
+    <%= f.submit 'Submit' %>
+
+<% end %>
+
+
