@@ -4,3 +4,4 @@
 <p><%= @book.summary %></p>
 
 <%= button_to "All Books", books_path, method: :get %>
+<%= button_to "Write Review", new_review_path, method: :get, params: {book_id: @book.id }  %>
