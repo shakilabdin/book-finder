@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_183225) do
     t.integer "user_id", null: false
     t.integer "book_id", null: false
     t.string "content"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
