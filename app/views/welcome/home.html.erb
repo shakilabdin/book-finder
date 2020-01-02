@@ -1,4 +1,12 @@
-<h1>Hi, <%= @user.name %></h1>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Book Reviews</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A website to leave reviews and/or share your opinion on books for others to see.</h2>
+        <a href="users/new" class="btn btn-primary js-scroll-trigger"> Sign Up </a>
+        <a href="login" class="btn btn-primary js-scroll-trigger"> Login </a>
+      </div>
+    </div>
+  </header>
+

@@ -4,9 +4,11 @@
     <%= f.text_field :title %>
     <br>
 
-    <%= f.label :author_id, "Author" %>
-    <%= f.text_field :author%>
-    
+    <%= fields_for :author do |author_fields| %>
+        <%= author_fields.label :name, "Author's Name" %>
+        <%= author_fields.text_field :name %>
+    <% end %>
+
     <br>
     <%= f.label :genre_id, "Genre: " %>
     <%= f.select :genre_id, @genre.collect {|g| [g.name, g.id]}, include_blank: true %>
@@ -18,3 +20,4 @@
     
 
 <% end %>
+

@@ -1,12 +1,17 @@
-<h2>Create an Account</h2>
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
 
-<%= form_for @user do |f| %>
-    Name: <%= f.text_field :username %>
-    <br>
-    Password: <%= f.password_field :password %>
-    <br>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <br>
-    <%= f.submit "Create Account" %>
+        <h2>Create an Account</h2>
 
-<% end  %>
+        <%= form_for @user do |f| %>
+            <p> Name:<%= f.text_field :username %> </p>
+            <p> Password: <%= f.password_field :password %></p>
+            <p> Password Confirmation: <%= f.password_field :password_confirmation %></p>
+            <p><%= f.submit "Create Account" %></p>
+
+        <% end  %>
+
+      </div>
+    </div>
+  </header>

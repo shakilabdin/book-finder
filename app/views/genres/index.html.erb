@@ -1,3 +1,16 @@
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Book Reviews</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A website to leave reviews and/or share your opinion on books for others to see.</h2>
+        <a href="users/new" class="btn btn-primary js-scroll-trigger"> Sign Up </a>
+        <a href="login" class="btn btn-primary js-scroll-trigger"> Login </a>
+      </div>
+    </div>
+  </header>
+
+
 <h1>All Genres</h1>
 <% @genres.each do |genre|%>
     <p><%= link_to genre.name, genre_path(genre)%></p>

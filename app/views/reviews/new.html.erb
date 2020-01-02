@@ -1,5 +1,17 @@
-<h1>New Review</h1>
+<%= form_for @review do |f| %>
 
-<%= render 'form' %>
+    <%= hidden_field_tag 'book_id', @book.id  %>
+    <%= f.label :rating, "Book Rating" %><br>
+    <%= f.select :rating, [0,1,2,3,4,5].collect {|n| [n, n]} %>
+    <hr>
+    <%= f.label :content, 'Write Your Review' %>
+    <hr>
+    <%= f.text_area :content, size: "100x5" %>
+    <hr>
+    <%= f.submit 'Submit', params: {book_id: @book.id, user_id: session[:user_id]} %>
 
-<%= button_to 'Submit', new_review_path(@review.book), method: :get %>
+<% end %>
+
+<hr>
+
+<%= button_to "Cancel", book_path(@book), method: :get %>
