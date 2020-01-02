@@ -10,30 +10,42 @@ class BooksController < ApplicationController
 
     def new 
         @book = Book.new
-        @genre = Genre.all
-        @author = Author.all
+        @genres = Genre.all
     end
     
     def create
-        @book = Book.create(book_params)
-        if @book.valid?
-            redirect_to book_path(@book)
+        book = Book.create(book_params)
+        if book.valid?
+            redirect_to book_path(book)
         else
-            flash[:messages] = @book.errors.full_messages
+            flash[:messages] = book.errors.full_messages
             redirect_to new_book_path
         end
     end
 
     def edit 
+        @book = Book.find(params[:id])
+        @genres = Genre.all
     end
 
     def update 
+        @book = Book.find(params[:id])
+        @book.update(book_params)
+        if book.valid?
+            redirect_to book_path(@book)
+        else
+            flash[:messages] = @book.errors.full_messages
+            redirect_to edit_book_path(@book)
+        end
     end
 
     private
 
     def book_params
-        params.require(:book).permit(:title, :author_id, :genre_id, :summary)
+        author = Author.find_or_create_by(name: params[:author][:name])
+        params[:book][:author_id] = author.id
+        params.require(:book).permit(:title, :author_id, :genre_id, :summary, :picture)
     end
+    
 
 end

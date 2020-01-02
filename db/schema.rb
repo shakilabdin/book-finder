@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_183225) do
     t.integer "genre_id", null: false
     t.integer "author_id", null: false
     t.string "summary"
+    t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_books_on_author_id"
@@ -51,6 +52,8 @@ ActiveRecord::Schema.define(version: 2019_12_30_183225) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "picture"
+    t.string "profile"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
