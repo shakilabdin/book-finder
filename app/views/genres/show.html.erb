@@ -1,16 +1,17 @@
-<h2><%= @genre.name %></h2>
+<div class='show-page'>
+    <h2><%= @genre.name %></h2>
 
-<img src=<%= @genre.picture %> alt=<%= @genre.name%>>
-<br>
-<br>
-<p>Profile: <%= @genre.profile %></p>
-<br>
-Books of this Genre:
-<% if @genre.books %>
-    <% @genre.books.each do |book|  %>
-        <p><%= link_to book.title, book_path(book) %></p>
-    <%end  %>
-<% end %>
+    <img height="300" width="300" src=<%= @genre.picture %> alt=<%= @genre.name%>>
+    <br>
+    <br>
+    <p>Profile: <%= @genre.profile %></p>
+    <br>
+    Books of this Genre:
+    <% if @genre.books %>
+        <% @genre.books.each do |book|  %>
+            <p><%= link_to book.title, book_path(book) %></p>
+        <%end  %>
+    <% end %>
 
-<%= button_to 'All Genres', genres_path, method: :get %>
-<%= button_to "Edit", edit_genre_path(@genre), method: :get %>
+    <p><%= button_to 'All Genres', genres_path, method: :get %></p>
+</div>

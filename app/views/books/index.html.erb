@@ -1,29 +1,91 @@
-<% @books.each do |book| %>
-<!-- Projects Section -->
-  <section id="projects" class="projects-section bg-light">
-    <div class="container">
+<div style="text-align:center">
+    <h1 style="font-size:5em">All Books</h1>
+    <p> <%= button_to "Add Book", new_book_path, method: :get %> </p>
 
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src=<%=book.picture%> alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white"><%=link_to book.title, book_path(book)%></h4>
-                <h4 class="text-white"><%=link_to book.author.name, author_path(book.author)%></h4>
-                <p class="mb-0 text-white-50"><%= book.summary %></p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
+    <%= form_with(url: "/search", method: "get") do %>
+        <%= label_tag(:q, "Search for:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+
+</div>
+
+<% if @search %>
+    <% q_books = []  %>
+    <% @books.each do |book|  %>
+        <% if book.title.include?(@search) %>
+            <% q_books << book %>
+        <% end  %>
+    <% end %>
+
+    <% q_books.each do |book| %>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section bg-light">
+            <div class="container">
+
+            <!-- Project One Row -->
+            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                <div class="col-lg-6">
+                <img height="300" width="300" class="img-fluid" src=<%=book.picture%> alt="">
+                </div>
+                <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-left">
+                        <h4 class="text-white"><%=link_to book.title, book_path(book)%></h4>
+                        <h4 class="text-white"><%=link_to book.author.name, author_path(book.author)%></h4>
+                        <p class="mb-0 text-white-50"><%= book.summary %></p>
+                        <hr class="d-none d-lg-block mb-0 ml-0">
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
 
-    </div>
-  </section>
+            </div>
+        </section>
+
+
+    <% end %>
+
+
+
+    <% else %>
+
+
+        <% @books.each do |book| %>
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section bg-light">
+            <div class="container">
+
+            <!-- Project One Row -->
+            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                <div class="col-lg-6">
+                <img height="300" width="300" class="img-fluid" src=<%=book.picture%> alt="">
+                </div>
+                <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-left">
+                        <h4 class="text-white"><%=link_to book.title, book_path(book)%></h4>
+                        <h4 class="text-white"><%=link_to book.author.name, author_path(book.author)%></h4>
+                        <p class="mb-0 text-white-50"><%= book.summary %></p>
+                        <hr class="d-none d-lg-block mb-0 ml-0">
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            </div>
+        </section>
+        
+        <%end %>
 
 <% end %>
+
+
+

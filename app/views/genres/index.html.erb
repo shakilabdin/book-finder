@@ -1,18 +1,33 @@
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">Book Reviews</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">A website to leave reviews and/or share your opinion on books for others to see.</h2>
-        <a href="users/new" class="btn btn-primary js-scroll-trigger"> Sign Up </a>
-        <a href="login" class="btn btn-primary js-scroll-trigger"> Login </a>
+<div style="text-align:center">
+    <h1 style="font-size:5em">All Genres</h1>
+   <p> <%= button_to "Add Genre", new_genre_path, method: :get %> </p>
+</div>
+
+<% @genres.each do |genre| %>
+<!-- Projects Section -->
+  <section id="projects" class="projects-section bg-light">
+    <div class="container">
+
+      <!-- Project One Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-6">
+          <img height="300" width="300" class="img-fluid" src=<%=genre.picture%> alt="">
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left">
+                <h4 class="text-white"><%=link_to genre.name, genre_path(genre)%></h4>
+                <p class="mb-0 text-white-50"><%= genre.profile %></p>
+                <hr class="d-none d-lg-block mb-0 ml-0">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+
     </div>
-  </header>
+  </section>
 
-
-<h1>All Genres</h1>
-<% @genres.each do |genre|%>
-    <p><%= link_to genre.name, genre_path(genre)%></p>
 <% end %>
-

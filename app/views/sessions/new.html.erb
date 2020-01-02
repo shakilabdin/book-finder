@@ -2,29 +2,12 @@
 <header class="masthead">
   <div class="container d-flex h-100 align-items-center">
     <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 text-uppercase">Login</h1>
       <%= form_for @user, url: login_path, method: :post do |f| %>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-        <hr>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        <hr>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Username: <%= f.text_field :username %></h2>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Password: <%= f.password_field :password %></h2>
         <%= f.submit "log in" %>
       <% end %>
     </div>
   </div>
 </header>
-
-<!-- About Section -->
-<section id="about" class="about-section text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-        <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-          <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-      </div>
-    </div>
-    <img src="img/ipad.png" class="img-fluid" alt="">
-  </div>
-</section>

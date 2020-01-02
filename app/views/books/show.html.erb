@@ -1,7 +1,21 @@
-<h1><%= @book.title %></h1>
-<h2><%= link_to @book.author.name, author_path(@book.author) %></h2>
-<h2><%= link_to @book.genre.name, genre_path(@book.genre) %></h2>
-<p><%= @book.summary %></p>
+<div class='show-page'>
+    <h2><%= @book.title %></h2>
+    <h3><%= link_to @book.author.name, author_path(@book.author) %></h3>
+    <h3><%= link_to @book.genre.name, genre_path(@book.genre) %></h3>
 
-<%= button_to "All Books", books_path, method: :get %>
-<%= button_to "Write Review", new_review_path, method: :get, params: {book_id: @book.id }  %>
+    <img height="300" width="300" src=<%= @book.picture %> alt=<%= @book.title%>>
+    <br>
+    <br>
+    <p>Summary: <%= @book.summary %></p>
+    <br>
+    Reviews: 
+    <% if @book.reviews %>
+        <% @book.reviews.each do |review|  %>
+            <%= review.user.name %>
+            <%= review.content %>
+        <%end  %>
+    <% end %>
+
+    <p><%= button_to 'All Books', books_path, method: :get %></p>
+    <%= button_to "Write Review", new_review_path, method: :get, params: {book_id: @book.id }  %>
+</div>

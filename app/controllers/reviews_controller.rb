@@ -7,15 +7,15 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        byebug
         @review = Review.create(review_params)
+        redirect_to book_path(@review.book)
     end
 
 
     private
 
     def review_params
-        params.require(:review).permit(:content)
+        params.require(:review).permit(:content, :rating)
         params.permit(:book_id)
         params.permit(session[:user_id])
     end
