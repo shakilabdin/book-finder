@@ -1,5 +1,5 @@
 <div class='show-page'>
-    <h2><%= @book.title %></h2>
+    <h2 class='book-title'><%= @book.title %></h2>
     <h3><%= link_to @book.author.name, author_path(@book.author) %></h3>
     <h3><%= link_to @book.genre.name, genre_path(@book.genre) %></h3>
 
@@ -8,14 +8,18 @@
     <br>
     <p>Summary: <%= @book.summary %></p>
     <br>
-    Reviews: 
+    <p class="review-p"> Reviews: </p> 
+    <hr class='hr-login'>
     <% if @book.reviews %>
         <% @book.reviews.each do |review|  %>
-            <%= review.user.name %>
-            <%= review.content %>
+            <div class='review-user'><%= review.user.username %>: <%= "#{review.rating}/5" %></div>
+            <div class='review-content'><%= review.content %></div>
+            <hr>
         <%end  %>
     <% end %>
 
     <p><%= button_to 'All Books', books_path, method: :get %></p>
-    <%= button_to "Write Review", new_review_path, method: :get, params: {book_id: @book.id }  %>
+    <% if @user %>
+        <%= button_to "Write Review", new_review_path, method: :get, params: {book_id: @book.id }  %>
+    <% end  %>
 </div>

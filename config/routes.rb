@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   root 'welcome#home'
   get '/login', to: 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
   get '/search', to: 'books#index'
+  get '/logout', to: 'application#logout'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

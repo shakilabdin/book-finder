@@ -47,6 +47,15 @@
           <li class="nav-item">
             <div style="font-size:15px" class="nav-link"><%= link_to "Books", books_path %> <span class="sr-only">(current)</span></div>
           </li>
+          <% if @user  %>
+            <li class="nav-item">
+              <div style="font-size:15px" class="nav-link"><%= link_to "Logout", logout_path %> <span class="sr-only">(current)</span></div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <div style="font-size:15px" class="nav-link"><%= link_to "Login", login_path %> <span class="sr-only">(current)</span></div>
+            </li>
+          <% end  %>
         </ul>
       </div>
     </nav>

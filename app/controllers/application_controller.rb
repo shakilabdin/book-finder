@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
     before_action :current_user
   
     def current_user
-      @user = (User.find_by(id: session[:user_id]) || User.new)
+      if session[:user_id]
+        @user = User.find_by(id: session[:user_id])
+      end
     end
   
     def logged_in?
@@ -12,6 +14,11 @@ class ApplicationController < ActionController::Base
   
     def require_logged_in
       return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
+    end
+    
+    def logout
+      session[:user_id] = nil
+      redirect_to(controller: 'welcome', action: 'home')
     end
     
 end
